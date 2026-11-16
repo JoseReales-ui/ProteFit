@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ProteFit Valledupar – Tu proteína lista al salir del gimnasio</title>
+<meta name="description" content="Bebidas proteicas saborizadas junto a los gimnasios de Valledupar. Pide por la web o por WhatsApp y recoge sin filas.">
+<meta property="og:title" content="ProteFit Valledupar">
+<meta property="og:description" content="Pide en tu última serie y recoge al salir. Bebidas proteicas hechas al momento.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Nunito:wght@400;600;700&display=swap">
+<style>
+:root{
+  --lime:#7ED321;--forest:#14532D;--orange:#FF8A3D;
+  --bg:#FFFFFF;--bg2:#F4F7F2;--surface:#FFFFFF;--text:#111827;--muted:#4B5563;--title:#14532D;--line:#DDE5D8;--onlime:#0B2A14;
+  --shadow:0 6px 20px rgba(20,83,45,.10);--r:16px;
+  color-scheme:light;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#0E1511;--bg2:#141D17;--surface:#1A251E;--text:#EEF3EC;--muted:#A8B5AB;--title:#9BE15D;--line:#2A3A2F;--shadow:0 6px 20px rgba(0,0,0,.4);color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#0E1511;--bg2:#141D17;--surface:#1A251E;--text:#EEF3EC;--muted:#A8B5AB;--title:#9BE15D;--line:#2A3A2F;--shadow:0 6px 20px rgba(0,0,0,.4);color-scheme:dark}
+html{scroll-behavior:smooth;scroll-padding-top:calc(76px + env(safe-area-inset-top,0px));height:100%}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;font-family:Nunito,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;font-size:17px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:60}
+h1,h2,h3{font-family:Poppins,system-ui,sans-serif;line-height:1.15;color:var(--title);margin:0 0 .5em}
+h1{font-size:clamp(2.1rem,7vw,3.6rem);font-weight:800}
+h2{font-size:clamp(1.6rem,4.5vw,2.3rem);font-weight:700;text-align:center}
+h3{font-size:1.15rem;font-weight:700}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+section{padding:64px 0}
+.alt{background:var(--bg2)}
+.sub{text-align:center;color:var(--muted);max-width:620px;margin:0 auto 32px}
+.btn{display:inline-block;border:0;border-radius:999px;padding:14px 26px;font:700 1rem Poppins,sans-serif;cursor:pointer;text-decoration:none;background:var(--lime);color:var(--onlime);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.btn.ghost{background:transparent;border:2px solid var(--lime);color:var(--text)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px;box-shadow:var(--shadow)}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+/* nav */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;font:800 1.3rem Poppins,sans-serif;color:var(--title)}
+.logo small{display:block;font:600 .68rem Nunito,sans-serif;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-top:-4px}
+.links{display:flex;gap:20px;align-items:center}
+.links a{text-decoration:none;font-weight:700;font-size:.95rem}
+.links a:not(.btn):hover{color:var(--orange)}
+.links .btn{padding:9px 18px}
+#burger{display:none;background:none;border:2px solid var(--line);border-radius:10px;width:44px;height:44px;font-size:1.4rem;color:var(--text);cursor:pointer}
+@media(max-width:820px){
+  #burger{display:block}
+  .links{display:none;position:absolute;left:0;right:0;top:64px;background:var(--bg);flex-direction:column;align-items:stretch;padding:14px 20px 20px;border-bottom:1px solid var(--line)}
+  .links.open{display:flex}
+  .links a{padding:10px 0}
+}
+/* hero */
+.hero{padding:56px 0 72px;background:linear-gradient(160deg,var(--bg2),var(--bg))}
+.hero .wrap{display:grid;gap:32px;align-items:center;grid-template-columns:1.2fr .8fr}
+.hero p{font-size:1.15rem;color:var(--muted);max-width:520px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin:22px 0}
+.chips{display:flex;gap:10px;flex-wrap:wrap;padding:0;list-style:none;margin:0}
+.chips li{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-weight:700;font-size:.9rem}
+.cup{font-size:7rem;text-align:center;background:var(--lime);border-radius:50%;aspect-ratio:1;display:grid;place-items:center;max-width:300px;margin:auto;width:100%;box-shadow:var(--shadow)}
+@media(max-width:700px){.hero .wrap{grid-template-columns:1fr}.cup{max-width:200px;font-size:5rem}}
+/* pasos */
+.step b{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--lime);color:var(--onlime);font:800 1.2rem Poppins,sans-serif;margin-bottom:10px}
+.quote{text-align:center;margin-top:28px;font:700 1.2rem Poppins,sans-serif;color:var(--orange)}
+/* carta */
+.flav{text-align:center}
+.flav .e{font-size:2.6rem}
+.price{font:700 .95rem Poppins,sans-serif;color:var(--title);margin:6px 0 12px}
+.small{font-size:.88rem;color:var(--muted)}
+/* pedido */
+.order{display:grid;gap:22px;grid-template-columns:1fr 1fr}
+@media(max-width:820px){.order{grid-template-columns:1fr}}
+label{display:block;font-weight:700;margin:12px 0 4px}
+input[type=text],input[type=time],select,textarea{width:100%;padding:12px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--text);font:inherit}
+.row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.row label{display:flex;gap:8px;align-items:center;margin:6px 0;font-weight:600}
+.qty{display:inline-flex;align-items:center;gap:12px}
+.qty button{width:44px;height:44px;border-radius:50%;border:2px solid var(--lime);background:var(--surface);color:var(--text);font-size:1.3rem;cursor:pointer}
+.qty output{min-width:28px;text-align:center;font-weight:800}
+#lista{list-style:none;margin:0 0 12px;padding:0}
+#lista li{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+#lista button{background:none;border:0;color:var(--orange);font-weight:800;cursor:pointer;font-size:.9rem}
+.total{display:flex;justify-content:space-between;font:800 1.3rem Poppins,sans-serif;color:var(--title);margin:10px 0}
+#msg,#wmsg{min-height:1.6em;font-weight:700;margin-top:10px}
+#msg.err,#wmsg.err{color:#C2410C}#msg.ok,#wmsg.ok{color:var(--title)}
+[aria-disabled="true"]{opacity:.6;cursor:not-allowed}
+/* promo, faq */
+.promo{background:var(--forest);color:#fff;border-radius:var(--r);padding:28px;text-align:center}
+.promo h3{color:var(--lime);font-size:1.4rem}
+details{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin-bottom:10px;padding:4px 18px}
+summary{cursor:pointer;font-weight:700;padding:14px 0}
+details p{margin:0 0 14px;color:var(--muted)}
+.ph{border:2px dashed var(--line);border-radius:var(--r);padding:36px;text-align:center;color:var(--muted)}
+footer{background:var(--forest);color:#E8F5E0;padding:36px 0;text-align:center}
+footer a{color:var(--lime)}
+#wa{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:55;background:#25D366;color:#073B1B;border-radius:999px;padding:13px 20px;font:700 .95rem Poppins,sans-serif;text-decoration:none;box-shadow:var(--shadow)}
+.rv{opacity:0;transform:translateY(14px);transition:opacity .5s,transform .5s}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{opacity:1;transform:none;transition:none}.btn{transition:none}}
+</style>
+</head>
+<body>
+<nav aria-label="Principal"><div class="wrap bar">
+  <a class="logo" href="#inicio" aria-label="ProteFit Valledupar, inicio">
+    <svg width="30" height="34" viewBox="0 0 30 34" aria-hidden="true"><path d="M5 8h20l-2.5 22a3 3 0 0 1-3 2.6h-9a3 3 0 0 1-3-2.6z" fill="#7ED321"/><rect x="3" y="4" width="24" height="5" rx="2.5" fill="#14532D"/><path d="M17 4 21 0" stroke="#FF8A3D" stroke-width="2.5" stroke-linecap="round"/></svg>
+    <span>ProteFit<small>Valledupar</small></span></a>
+  <button id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">☰</button>
+  <div class="links" id="menu">
+    <a href="#inicio">Inicio</a><a href="#como">Cómo funciona</a><a href="#carta">Carta</a><a href="#pedir">Pedir</a><a href="#faq">Preguntas</a><a href="#contacto">Contacto</a>
+    <a class="btn" href="#pedir">Pedir ahora</a>
+  </div>
+</div></nav>
+
+<main>
+<section class="hero" id="inicio"><div class="wrap">
+  <div>
+    <h1>Tu proteína lista al salir del gimnasio</h1>
+    <p>Pide por la web, recoge sin filas. Bebidas proteicas saborizadas, bajas en azúcar y hechas al momento.</p>
+    <div class="cta"><a class="btn" href="#pedir">Pedir ahora</a><a class="btn ghost" href="#carta">Ver la carta</a></div>
+    <ul class="chips"><li>⏱️ Sin filas</li><li>🥤 Hecho al momento</li><li>🍃 Opción baja en azúcar</li></ul>
+  </div>
+  <!-- REEMPLAZAR IMAGEN: foto real de las bebidas -->
+  <div class="cup" role="img" aria-label="Batido de proteína">🥤</div>
+</div></section>
+
+<section id="como"><div class="wrap">
+  <h2>Cómo funciona</h2><p class="sub">Tres pasos y tu bebida te espera.</p>
+  <div class="grid">
+    <div class="card step rv"><b>1</b><h3>Elige tu sabor y tamaño</h3><p>Mira la carta y arma tu bebida a tu gusto.</p></div>
+    <div class="card step rv"><b>2</b><h3>Haz tu pedido</h3><p>Por la web o por WhatsApp. Paga con Nequi, Daviplata o efectivo.</p></div>
+    <div class="card step rv"><b>3</b><h3>Recoge sin filas</h3><p>Tu bebida estará lista cuando llegues.</p></div>
+  </div>
+  <p class="quote">“Pide en tu última serie y recoge al salir”</p>
+</div></section>
+
+<section id="carta" class="alt"><div class="wrap">
+  <h2>Nuestra carta</h2>
+  <p class="sub">Cada tamaño indica cuánta proteína aporta. Todas tienen opción baja en azúcar y sin lactosa, sin costo adicional.</p>
+  <div class="grid" id="menuGrid"></div>
+  <p class="small" style="text-align:center;margin-top:18px">12 oz: $9.000 · 16 oz: $12.000</p>
+</div></section>
+
+<section id="combos"><div class="wrap">
+  <h2>Combos</h2><p class="sub">Ahorra pidiendo en combo. Al agregarlo, cuéntanos tus sabores en las notas del pedido.</p>
+  <div class="grid" id="comboGrid"></div>
+</div></section>
+
+<section id="pedir"><div class="wrap">
+  <h2>Haz tu pedido</h2><p class="sub">Arma tu pedido y envíalo por WhatsApp con el mensaje ya redactado.</p>
+  <div class="order">
+    <div class="card">
+      <h3>1. Elige tu bebida</h3>
+      <label for="sabor">Sabor</label><select id="sabor"></select>
+      <fieldset style="border:0;padding:0;margin:0"><legend style="font-weight:700;margin-top:12px">Tamaño</legend><div class="row" id="tamanos"></div></fieldset>
+      <div class="row" style="margin-top:6px"><label><input type="checkbox" id="oAzucar"> Baja en azúcar</label><label><input type="checkbox" id="oLactosa"> Sin lactosa</label></div>
+      <label for="cant">Cantidad</label>
+      <div class="qty"><button type="button" id="menos" aria-label="Disminuir cantidad">−</button><output id="cant" aria-live="polite">1</output><button type="button" id="mas" aria-label="Aumentar cantidad">+</button></div>
+      <p><button class="btn" type="button" id="agregar" style="margin-top:16px">Agregar al pedido</button></p>
+    </div>
+    <div class="card">
+      <h3>2. Tu pedido</h3>
+      <ul id="lista" aria-live="polite"></ul>
+      <div class="total"><span>Total</span><span id="total">$0</span></div>
+      <label for="nombre">Nombre</label><input type="text" id="nombre" autocomplete="name">
+      <label for="hora">Hora estimada de recogida</label><input type="time" id="hora">
+      <label for="pago">Método de pago</label>
+      <select id="pago"><option>Nequi</option><option>Daviplata</option><option>Efectivo</option></select>
+      <label for="notas">Notas (opcional)</label><textarea id="notas" rows="2"></textarea>
+      <p><button class="btn" type="button" id="enviar" style="margin-top:14px">Enviar pedido por WhatsApp</button></p>
+      <div id="msg" role="status"></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <h2>¿Por qué ProteFit?</h2><p class="sub">Pensado para quienes entrenan.</p>
+  <div class="grid">
+    <div class="card rv"><h3>⚡ Lista cuando llegas</h3><p>Pides antes y no esperas: tu bebida está preparada.</p></div>
+    <div class="card rv"><h3>🥤 Hecho al momento</h3><p>Preparamos cada bebida cuando llegas por ella.</p></div>
+    <div class="card rv"><h3>🍃 Opciones para ti</h3><p>Versiones bajas en azúcar y sin lactosa.</p></div>
+    <div class="card rv"><h3>💸 Precios accesibles</h3><p>Pensados para estudiantes y jóvenes profesionales.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="promo">
+    <h3>Bono de compras frecuentes</h3>
+    <!-- EDITAR: promoción -->
+    <p>Compra 9 bebidas y la décima es gratis.</p>
+    <p>Además, tienes descuento si traes tu propio vaso.</p>
+  </div>
+</div></section>
+
+<section id="espera" class="alt"><div class="wrap" style="max-width:620px">
+  <h2>Avísame cuando abramos</h2><p class="sub">Déjanos tus datos y te escribimos apenas tengamos novedades.</p>
+  <div class="card">
+    <label for="wnombre">Nombre</label><input type="text" id="wnombre" autocomplete="name">
+    <label for="wtel">Tu WhatsApp</label><input type="text" id="wtel" inputmode="tel" autocomplete="tel">
+    <p><button class="btn" type="button" id="wenviar" style="margin-top:14px">Quiero que me avisen</button></p>
+    <div id="wmsg" role="status"></div>
+  </div>
+</div></section>
+
+<section id="opinion"><div class="wrap" style="max-width:620px;text-align:center">
+  <h2>Ayúdanos con tu opinión</h2><p class="sub">Responde nuestra encuesta. Tus respuestas nos ayudan a ajustar sabores, precios y servicio.</p>
+  <p><a class="btn" id="formLink" href="#" target="_blank" rel="noopener">Responder la encuesta</a></p>
+</div></section>
+
+<section id="faq"><div class="wrap" style="max-width:760px">
+  <h2>Preguntas frecuentes</h2>
+  <details><summary>¿Cómo hago un pedido?</summary><p>Elige tu bebida en la sección “Haz tu pedido”, completa tus datos y envía el pedido por WhatsApp.</p></details>
+  <details><summary>¿Cuánto demora?</summary><p>Preparamos tu bebida al momento. Indica tu hora de recogida y la tendremos lista.</p></details>
+  <details><summary>¿Qué medios de pago aceptan?</summary><p>Nequi, Daviplata y efectivo.</p></details>
+  <details><summary>¿Tienen opción baja en azúcar o sin lactosa?</summary><p>Sí, puedes marcarlas al armar tu pedido, sin costo adicional.</p></details>
+  <details><summary>¿Cuánta proteína tiene cada bebida?</summary><p>Cada tamaño indica su aporte de proteína en la carta. [Dato por confirmar]</p></details>
+  <details><summary>¿Puedo pedir sin la página web?</summary><p>Sí, también puedes escribirnos directamente por WhatsApp.</p></details>
+</div></section>
+
+<section id="contacto" class="alt"><div class="wrap" style="text-align:center">
+  <h2>Contacto</h2>
+  <p class="sub">Escríbenos y resolvemos tus dudas.</p>
+  <p><a class="btn" id="waLink" href="#" target="_blank" rel="noopener">Escribir por WhatsApp</a></p>
+  <p>Instagram: <a href="https://instagram.com/protefit.valledupar" target="_blank" rel="noopener">@protefit.valledupar</a> · correo@ejemplo.com</p>
+  <p class="small">Hecho en Valledupar 💚</p>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <strong>ProteFit Valledupar</strong>
+  <p><a href="#carta">Carta</a> · <a href="#pedir">Pedir</a> · <a href="#faq">Preguntas</a></p>
+  <p class="small" style="color:#C9DDBE">Proyecto académico de la Cátedra de Emprendimiento – Universidad Popular del Cesar · <span id="anio"></span></p>
+</div></footer>
+
+<a id="wa" href="#" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">💬 WhatsApp</a>
+
+<script>
+// ===== EDITAR AQUÍ =====
+const WHATSAPP = "573137784040";           // número con indicativo 57
+const PROT = "[__ g de proteína]";          // dato real por tamaño
+const SIZES = [{id:"12",label:"12 oz",price:9000},{id:"16",label:"16 oz",price:12000}];
+const MENU = [
+  {n:"Chocolate",e:"🍫",d:"Cremoso e intenso."},
+  {n:"Vainilla",e:"🍦",d:"Suave y clásico."},
+  {n:"Fresa",e:"🍓",d:"Fresco y frutal."},
+  {n:"Café",e:"☕",d:"Con aroma regional, ideal antes o después de entrenar."},
+  {n:"Frutas tropicales",e:"🥭",d:"Ligero y refrescante."}
+];
+const COMBOS = [ // p = precio del combo, normal = precio sumando bebidas sueltas
+  {n:"Combo Post-entreno",e:"💪",d:"Una bebida de 16 oz y una de 12 oz para recuperarte o compartir.",p:19000,normal:21000},
+  {n:"Combo Dúo",e:"🤝",d:"Dos bebidas de 16 oz para ti y tu compañero de entreno.",p:22000,normal:24000},
+  {n:"Combo Semana fit",e:"📅",d:"Cinco bebidas de 12 oz para toda la semana.",p:40000,normal:45000}
+];
+const FORM_URL = ""; // pega aquí el enlace de tu Google Forms
+// =======================
+const $ = (s) => document.querySelector(s);
+const money = (n) => "$" + n.toLocaleString("es-CO");
+let cart = [], qty = 1;
+try { cart = JSON.parse(localStorage.getItem("pf_cart") || "[]"); $("#nombre").value = localStorage.getItem("pf_nombre") || ""; } catch (e) {}
+const save = () => { try { localStorage.setItem("pf_cart", JSON.stringify(cart)); localStorage.setItem("pf_nombre", $("#nombre").value); } catch (e) {} };
+
+// carta y selectores
+$("#menuGrid").innerHTML = MENU.map((m, i) => `<div class="card flav rv"><div class="e" aria-hidden="true">${m.e}</div><h3>${m.n}</h3><p class="small">${m.d}</p><p class="price">12 oz $9.000 · 16 oz $12.000</p><p class="small">${PROT}</p><button class="btn" data-i="${i}" type="button">Pedir</button></div>`).join("");
+$("#sabor").innerHTML = MENU.map((m, i) => `<option value="${i}">${m.e} ${m.n}</option>`).join("");
+$("#tamanos").innerHTML = SIZES.map((s, i) => `<label><input type="radio" name="tam" value="${i}" ${i ? "" : "checked"}> ${s.label} (${money(s.price)})</label>`).join("");
+$("#menuGrid").addEventListener("click", (e) => { const b = e.target.closest("button[data-i]"); if (b) { $("#sabor").value = b.dataset.i; $("#pedir").scrollIntoView(); } });
+
+$("#comboGrid").innerHTML = COMBOS.map((c, i) => `<div class="card flav rv"><div class="e" aria-hidden="true">${c.e}</div><h3>${c.n}</h3><p class="small">${c.d}</p><p class="price">${money(c.p)} <s class="small">${money(c.normal)}</s></p><button class="btn" data-c="${i}" type="button">Agregar combo</button></div>`).join("");
+$("#comboGrid").addEventListener("click", (e) => {
+  const b = e.target.closest("button[data-c]"); if (!b) return;
+  const c = COMBOS[b.dataset.c], hit = cart.find((x) => x.n === c.n);
+  if (hit) hit.q += 1; else cart.push({ n: c.n, s: "", o: "", p: c.p, q: 1 });
+  draw(); $("#pedir").scrollIntoView(); say("Combo agregado. Cuéntanos tus sabores en las notas.", "ok");
+});
+const setQty = (n) => { qty = Math.max(1, Math.min(20, n)); $("#cant").textContent = qty; };
+$("#menos").onclick = () => setQty(qty - 1);
+$("#mas").onclick = () => setQty(qty + 1);
+
+function draw() {
+  $("#lista").innerHTML = cart.length ? cart.map((c, i) => `<li><span>${c.q} × ${c.n} ${c.s}${c.o ? " (" + c.o + ")" : ""}<br><small>${money(c.q * c.p)}</small></span><button type="button" data-x="${i}" aria-label="Quitar ${c.n}">Quitar</button></li>`).join("") : "<li class='small'>Aún no has agregado bebidas.</li>";
+  $("#total").textContent = money(cart.reduce((t, c) => t + c.q * c.p, 0));
+  save();
+}
+$("#lista").addEventListener("click", (e) => { const b = e.target.closest("button[data-x]"); if (b) { cart.splice(+b.dataset.x, 1); draw(); } });
+
+$("#agregar").onclick = () => {
+  const m = MENU[$("#sabor").value], s = SIZES[document.querySelector("input[name=tam]:checked").value];
+  const o = [$("#oAzucar").checked && "baja en azúcar", $("#oLactosa").checked && "sin lactosa"].filter(Boolean).join(", ");
+  const hit = cart.find((c) => c.n === m.n && c.s === s.label && c.o === o);
+  if (hit) hit.q += qty; else cart.push({ n: m.n, s: s.label, o, p: s.price, q: qty });
+  setQty(1); draw(); say("Bebida agregada a tu pedido.", "ok");
+};
+function say(t, k) { const m = $("#msg"); m.textContent = t; m.className = k; }
+
+$("#enviar").onclick = () => {
+  const nombre = $("#nombre").value.trim();
+  if (!cart.length) return say("Agrega al menos una bebida a tu pedido.", "err");
+  if (!nombre) { $("#nombre").focus(); return say("Escribe tu nombre para enviar el pedido.", "err"); }
+  const items = cart.map((c) => `${c.q} x ${c.n} ${c.s}${c.o ? " (" + c.o + ")" : ""}`).join(", ");
+  const total = money(cart.reduce((t, c) => t + c.q * c.p, 0));
+  const notas = $("#notas").value.trim();
+  const txt = `Hola ProteFit 👋 Quiero hacer un pedido: ${items}. Total: ${total}. Nombre: ${nombre}. Recojo a las ${$("#hora").value || "la hora que me indiquen"}. Pago con ${$("#pago").value}.${notas ? " Notas: " + notas : ""}`;
+  window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(txt)}`, "_blank", "noopener");
+  say("¡Listo! Se abrió WhatsApp con tu pedido. Envía el mensaje para confirmarlo.", "ok");
+};
+$("#nombre").addEventListener("input", save);
+
+// lista de espera
+$("#wenviar").onclick = () => {
+  const n = $("#wnombre").value.trim(), t = $("#wtel").value.trim(), m = $("#wmsg");
+  if (!n || t.replace(/\D/g, "").length < 7) { m.textContent = "Escribe tu nombre y un número de WhatsApp válido."; m.className = "err"; return; }
+  window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(`Hola ProteFit 👋 Quiero que me avisen cuando abran. Nombre: ${n}. Mi WhatsApp: ${t}.`)}`, "_blank", "noopener");
+  m.textContent = "¡Gracias! Se abrió WhatsApp: envía el mensaje para quedar en la lista."; m.className = "ok";
+};
+// encuesta
+const fl = $("#formLink");
+if (FORM_URL) fl.href = FORM_URL; else { fl.textContent = "Enlace de la encuesta pendiente"; fl.setAttribute("aria-disabled", "true"); fl.addEventListener("click", (e) => e.preventDefault()); }
+
+// WhatsApp general, menú móvil, año, animaciones
+const wa = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Hola ProteFit 👋")}`;
+$("#wa").href = wa; $("#waLink").href = wa;
+$("#anio").textContent = new Date().getFullYear();
+const burger = $("#burger"), menu = $("#menu");
+burger.onclick = () => { const o = menu.classList.toggle("open"); burger.setAttribute("aria-expanded", o); };
+menu.addEventListener("click", (e) => { if (e.target.tagName === "A") { menu.classList.remove("open"); burger.setAttribute("aria-expanded", "false"); } });
+const io = "IntersectionObserver" in window ? new IntersectionObserver((es) => es.forEach((x) => { if (x.isIntersecting) { x.target.classList.add("in"); io.unobserve(x.target); } }), { threshold: .15 }) : null;
+document.querySelectorAll(".rv").forEach((el) => io ? io.observe(el) : el.classList.add("in"));
+draw();
+</script>
+</body>
+</html>
